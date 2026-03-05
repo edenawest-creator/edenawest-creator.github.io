@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music | Dawson Trotman</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F4F1EB;
+            --cream-dark: #E8E4DC;
+            --ink: #1A1A1A;
+            --ink-light: #4A4A4A;
+            --accent: #C4553D;
+            --accent-hover: #A8432E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Instrument Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 28px 0;
+            background: transparent;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            background: rgba(244, 241, 235, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--ink);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 180px 0 80px;
+        }
+
+        .page-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 400;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-dark {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .section-alt {
+            background: var(--cream-dark);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .section-description {
+            font-size: 1.05rem;
+            color: var(--ink-light);
+            max-width: 700px;
+            line-height: 1.8;
+            margin-bottom: 60px;
+        }
+
+        .section-dark .section-description {
+            color: rgba(244, 241, 235, 0.7);
+        }
+
+        /* About Music Grid */
+        .about-music {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-music-img img {
+            width: 100%;
+            height: auto;
+        }
+
+        .about-music-content {
+            max-width: 560px;
+        }
+
+        .about-music-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 32px;
+        }
+
+        .about-music-content p {
+            font-size: 1.05rem;
+            color: var(--ink-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Featured Video */
+        .featured-video {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: var(--ink);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-details h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .video-details p {
+            font-size: 1rem;
+            color: var(--ink-light);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            background: rgba(196, 85, 61, 0.1);
+            color: var(--accent);
+        }
+
+        /* Music Catalog */
+        .catalog-section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(244, 241, 235, 0.2);
+            color: var(--cream);
+        }
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .music-item {
+            background: rgba(244, 241, 235, 0.05);
+            border: 1px solid rgba(244, 241, 235, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .music-item:hover {
+            border-color: rgba(244, 241, 235, 0.3);
+            background: rgba(244, 241, 235, 0.08);
+        }
+
+        .music-item-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .music-item-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .music-item-content {
+            padding: 24px;
+        }
+
+        .music-item-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--cream);
+        }
+
+        .music-item-content p {
+            font-size: 0.9rem;
+            color: rgba(244, 241, 235, 0.7);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .audio-player {
+            margin-top: 16px;
+        }
+
+        .audio-player audio {
+            width: 100%;
+            height: 40px;
+            filter: invert(1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--cream-dark);
+            background: var(--cream);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: var(--ink);
+        }
+
+        .footer-tagline {
+            font-size: 0.95rem;
+            color: var(--ink-light);
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            color: var(--ink);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            font-size: 0.95rem;
+            color: var(--ink-light);
+        }
+
+        .footer-column a:hover {
+            color: var(--ink);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--cream-dark);
+            border-radius: 50%;
+            font-size: 1rem;
+            color: var(--ink-light);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            border-color: var(--ink);
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--cream-dark);
+            font-size: 0.85rem;
+            color: var(--ink-light);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-button {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-button .bar {
+            width: 24px;
+            height: 2px;
+            background: var(--ink);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-music {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .featured-video {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .music-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--cream);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                transition: right 0.4s ease;
+            }
+
+            .nav-links.show {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            .page-header {
+                padding: 140px 0 60px;
+            }
+
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Dawson Trotman</a>
+                <div class="mobile-menu-button">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="music.html" class="active">Music</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title fade-in">Music</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="about-music">
+                <div class="about-music-img fade-in">
+                    <img src="media/violinedited.jpg" alt="Musician at work">
+                </div>
+                <div class="about-music-content fade-in fade-in-delay-1">
+                    <h2>My Musical Approach</h2>
+                    <p>As both a biologist and musician, my perspective exists at the intersection of science and art. I use art and data interchangeably to bring clarity to my world, find beauty in that world, and contribute as much beauty as I can.</p>
+                    <p>What inspires me is vast. I'm attracted to big ideas, big feelings that find their form in the smallest things. Whether it's the emergent qualities of bacteria in community, musicians at a jam, or the smallest parts of the production coming together to form the play, I love how small units coalesce to become something more beautiful than the sum of their parts.</p>
+                    <p>The goal of my musical work is not just artistic expression, but a careful inspection of how we all make each other more beautiful. None of us are separate; all of us emergent. Art and science are the data— the evidence— of that great theory.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <span class="section-label">Featured</span>
+            <h2 class="section-title">Touch of Blue</h2>
+            <p class="section-description">While at the University of Michigan, I had the honour of serving as Touch of Blue vocal ensemble's music director. As MD, I emphasized learning works of foundational vocal jazz artists: Ella Fitzgerald, Billie Holiday, Sarah Vaughn and others.</p>
+
+            <div class="featured-video">
+                <div class="video-container">
+                    <iframe 
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/AHKIzmf8qN4?rel=0" 
+                        title="I'll Be Seeing You" 
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-details">
+                    <h3>"I'll Be Seeing You"</h3>
+                    <p>I'll Be Seeing You by Sammy Fain, arranged by the New York Voices.</p>
+                    <p>Performed by:<br>
+                    Soprano: Alison Gaines<br>
+                    Alto: Brooke Arnold<br>
+                    Tenor: Dawson Trotman<br>
+                    Bass: Tommy Hodgman</p>
+                    <div class="tags">
+                        <span class="tag">Jazz</span>
+                        <span class="tag">Standards</span>
+                        <span class="tag">Vocal Music</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container">
+            <span class="section-label" style="color: var(--accent);">Catalog</span>
+            <h2 class="section-title" style="color: var(--cream);">Music Collection</h2>
+            <p class="section-description">A collection of compositions, arrangements, and performances.</p>
+
+            <h3 class="catalog-section-title">Audio</h3>
+            <div class="music-grid">
+                <div class="music-item">
+                    <div class="music-item-content">
+                        <h3>"Come Sunday"</h3>
+                        <p>Touch of Blue recording of Come Sunday by Duke Ellington. Directed by D. Trotman.</p>
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="media/Touch_of_Blue_Come_Sunday_16-44.1.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item">
+                    <div class="music-item-content">
+                        <h3>"As the World Caves In"</h3>
+                        <p>Excerpt from 2023 arrangement of As the World Caves in by Matt Maltese. Arranged by D. Trotman. Contact for sheet music.</p>
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="media/AstheWorldCavesIn.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-item">
+                    <div class="music-item-content">
+                        <h3>"Apple Blossom"</h3>
+                        <p>Demo of Apple Blossom by Esperanza Spalding, recorded on iPhone, December 2024. Made in preparation of commission for Touch of Blue, April 2025.</p>
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="media/apple_blossom_december2024.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="catalog-section-title">Video</h3>
+            <div class="music-grid">
+                <div class="music-item">
+                    <div class="music-item-video">
+                        <iframe 
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/xN1o4a00_AE?rel=0" 
+                            title="Ornithology" 
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="music-item-content">
+                        <h3>"Ornithology"</h3>
+                        <p>Ornithology by Charlie Parker and Babs Gonzalez at Kerrytown Concert House December 2023.</p>
+                    </div>
+                </div>
+
+                <div class="music-item">
+                    <div class="music-item-video">
+                        <iframe 
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/f_6DfLBFGyk?rel=0" 
+                            title="Bleuet" 
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="music-item-content">
+                        <h3>"Bleuet"</h3>
+                        <p>Bleuet by Francis Poulenc. Excerpted from Dawson's senior recital at the University of Michigan SMTD. April 7, 2024. Piano: Eden West.</p>
+                    </div>
+                </div>
+
+                <div class="music-item">
+                    <div class="music-item-video">
+                        <iframe 
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/-Sc4iybkt-o?rel=0" 
+                            title="One Note Samba" 
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="music-item-content">
+                        <h3>"One Note Samba"</h3>
+                        <p>One Note Samba by Antonio Carlos Jobim, arranged by the Junction, performed by Touch of Blue at Kerrytown Concert House, December 2023. Music direction D. Trotman.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Dawson Trotman</h3>
+                    <p class="footer-tagline">Biologist and musician based in New York City. Exploring the intersections of science, art, and the beauty of complex systems.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="music.html">Music</a></li>
+                        <li><a href="research.html">Research</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/dawson-trotman-9115b6313/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/d-trotman" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:dawsonatrotman@gmail.com" aria-label="Email"><i class="far fa-envelope"></i></a>
+                        <a href="https://www.instagram.com/dawsontrotman" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@Dawson_Trotman" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="media/resume.pdf" aria-label="Resume" target="_blank"><i class="far fa-file-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Dawson Trotman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+            this.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('show');
+                document.querySelector('.mobile-menu-button').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

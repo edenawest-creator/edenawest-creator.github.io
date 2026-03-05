@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Dawson Trotman</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F4F1EB;
+            --cream-dark: #E8E4DC;
+            --ink: #1A1A1A;
+            --ink-light: #4A4A4A;
+            --accent: #C4553D;
+            --accent-hover: #A8432E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Instrument Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 28px 0;
+            background: transparent;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            background: rgba(244, 241, 235, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--ink);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 180px 0 80px;
+        }
+
+        .page-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 400;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--ink-light);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-alt {
+            background: var(--cream-dark);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .section-description {
+            font-size: 1.05rem;
+            color: var(--ink-light);
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 60px;
+        }
+
+        /* Research Highlight */
+        .research-highlight {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            margin-bottom: 100px;
+            align-items: start;
+        }
+
+        .research-highlight:last-child {
+            margin-bottom: 0;
+        }
+
+        .research-highlight:nth-child(even) {
+            direction: rtl;
+        }
+
+        .research-highlight:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .research-img {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-img img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.6s ease;
+        }
+
+        .research-highlight:hover .research-img img {
+            transform: scale(1.03);
+        }
+
+        .research-content {
+            padding-top: 20px;
+        }
+
+        .research-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .research-meta span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding: 6px 12px;
+            background: rgba(196, 85, 61, 0.1);
+        }
+
+        .research-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 500;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .research-text {
+            font-size: 1rem;
+            color: var(--ink-light);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid var(--ink);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .skill-card {
+            padding: 40px;
+            background: var(--cream);
+            border: 1px solid var(--cream-dark);
+            transition: all 0.3s ease;
+        }
+
+        .section-alt .skill-card {
+            background: white;
+        }
+
+        .skill-card:hover {
+            border-color: var(--ink);
+        }
+
+        .skill-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .skill-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            font-size: 0.95rem;
+            color: var(--ink-light);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Education */
+        .education-card {
+            padding: 60px;
+            background: white;
+            border: 1px solid var(--cream-dark);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .education-degree {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .education-year {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding: 8px 16px;
+            background: rgba(196, 85, 61, 0.1);
+        }
+
+        .education-school {
+            font-size: 1.1rem;
+            color: var(--ink-light);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .degree-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .degree-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .degree-item > p {
+            font-size: 0.95rem;
+            color: var(--ink-light);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .degree-item h5 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .coursework-list {
+            list-style: none;
+        }
+
+        .coursework-list li {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            padding: 6px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .coursework-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .senior-project {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .senior-project h4 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .senior-project p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--ink-light);
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .footer-tagline {
+            font-size: 0.95rem;
+            color: var(--ink-light);
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            font-size: 0.95rem;
+            color: var(--ink-light);
+        }
+
+        .footer-column a:hover {
+            color: var(--ink);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--cream-dark);
+            border-radius: 50%;
+            font-size: 1rem;
+            color: var(--ink-light);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            border-color: var(--ink);
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--cream-dark);
+            font-size: 0.85rem;
+            color: var(--ink-light);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-button {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-button .bar {
+            width: 24px;
+            height: 2px;
+            background: var(--ink);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .research-highlight {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .research-highlight:nth-child(even) {
+                direction: ltr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .degree-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--cream);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                transition: right 0.4s ease;
+            }
+
+            .nav-links.show {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            .page-header {
+                padding: 140px 0 60px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-card {
+                padding: 40px 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Dawson Trotman</a>
+                <div class="mobile-menu-button">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="music.html">Music</a></li>
+                    <li><a href="research.html" class="active">Research</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title fade-in">Research</h1>
+            <p class="page-subtitle fade-in fade-in-delay-1">My research focuses on understanding microbial communities, using tractable experiments, high-throughput genomics, and mathematical models to learn the laws that govern them.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <span class="section-label">Current Work</span>
+            
+            <div class="research-highlight fade-in">
+                <div class="research-img">
+                    <img src="media/fig1_abreu.png" alt="Abreu Lab Research">
+                </div>
+                <div class="research-content">
+                    <div class="research-meta">
+                        <span>2024–Present</span>
+                        <span>NYU</span>
+                    </div>
+                    <h3 class="research-title">Post-Bacc in the Abreu Lab</h3>
+                    <p class="research-text">I am currently using high throughput barcode sequencing, whole-genome sequencing, and RNA-seq to study environmental memory in S. cerevisiae. My research focuses on the epigenetic mechanisms that explain fitness trade-offs in S. cerevisiae mutants, specifically when they are grown in fluctuating environments.</p>
+                    <p class="research-text">Our findings suggest that different evolutionary strategies contribute more or less environmental fitness trade-offs, depending on their 'environmental distance.'</p>
+                    <a href="https://www.abreulab.org/" class="btn">Lab Website</a>
+                </div>
+            </div>
+
+            <div class="research-highlight fade-in">
+                <div class="research-img">
+                    <img src="media/062024_MBD - 6.jpeg" alt="Mnomen Research">
+                </div>
+                <div class="research-content">
+                    <div class="research-meta">
+                        <span>2023–2024</span>
+                        <span>Matthaei Botanical Gardens</span>
+                    </div>
+                    <h3 class="research-title">Meet the Mnomen</h3>
+                    <p class="research-text">This project investigated the microbial communities and chemical conditions that supported Mnomen, or wild rice, growth in Michigan. In collaboration with the Bay Mills Indian Community, our collected soil and plant data on Michigan Mnomen beds.</p>
+                    <p class="research-text">Our research has revealed typical (iso-) chemical conditions in the soil and water that support robust Mnomen beds as well as the unique microbial conditions that benefit Mnomen. We used that data to inform other reintroduction efforts, such as the one we spearheaded at the Matthaei Botanical Gardens.</p>
+                    <a href="#" class="btn">View Project Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <span class="section-label">Expertise</span>
+            <h2 class="section-title">Research Skills</h2>
+            <p class="section-description">A comprehensive overview of my professional capabilities and expertise across laboratory, field, and computational domains.</p>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-flask"></i></div>
+                    <h3 class="skill-title">Laboratory Expertise</h3>
+                    <ul class="skill-list">
+                        <li>PCR, RT-PCR</li>
+                        <li>Molecular Cloning</li>
+                        <li>Whole-Genome Sequencing, Barcode-Sequencing, RNA-seq</li>
+                        <li>Sterile Technique, Culturing</li>
+                        <li>Microscopy & Imaging Techniques</li>
+                        <li>Elemental Analysis</li>
+                        <li>Carbon Isotope Mass Spectrometry</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-leaf"></i></div>
+                    <h3 class="skill-title">Field Expertise</h3>
+                    <ul class="skill-list">
+                        <li>Ecological Sampling Methodologies</li>
+                        <li>In-situ Monitoring System Setup</li>
+                        <li>Field Botany</li>
+                        <li>Water Sampling</li>
+                        <li>Soil Sampling</li>
+                        <li>Long-term Field Study Management</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="skill-title">Data Analysis & Software</h3>
+                    <ul class="skill-list">
+                        <li>Python, SQL, HTML, R</li>
+                        <li>Data Science and Machine Learning</li>
+                        <li>Business Intelligence and Data Visualization</li>
+                        <li>Linux and HPC</li>
+                        <li>GIS Applications for Ecological Mapping</li>
+                        <li>Bioinformatics Platforms</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3 class="skill-title">Science Communication</h3>
+                    <ul class="skill-list">
+                        <li>Scientific Publication & Manuscript Preparation</li>
+                        <li>Grant Writing & Research Proposals</li>
+                        <li>Conference Presentations & Posters</li>
+                        <li>Science Education & Public Outreach</li>
+                        <li>Scientific Data Visualization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <span class="section-label">Background</span>
+            <h2 class="section-title">Education</h2>
+
+            <div class="education-card">
+                <div class="education-header">
+                    <h3 class="education-degree">Dual Bachelor's Degrees</h3>
+                    <span class="education-year">2024</span>
+                </div>
+                <p class="education-school"><i class="fas fa-university"></i> University of Michigan</p>
+
+                <div class="degree-grid">
+                    <div class="degree-item">
+                        <h4>B.S. in Earth and Environmental Science</h4>
+                        <p>Concentration in Environmental Microbiology and Soil Science</p>
+                        <h5>Relevant Coursework</h5>
+                        <ul class="coursework-list">
+                            <li>Geochemistry of Natural Waters</li>
+                            <li>Organic Chemistry</li>
+                            <li>Environmental Biogeochemistry</li>
+                            <li>Ecology and Evolutionary Biology</li>
+                            <li>Geographic Information Systems</li>
+                            <li>Environmental Microbiology</li>
+                        </ul>
+                    </div>
+
+                    <div class="degree-item">
+                        <h4>B.M.A. in Voice Performance</h4>
+                        <p>Concentration in Classical Vocal Studies</p>
+                        <h5>Relevant Coursework</h5>
+                        <ul class="coursework-list">
+                            <li>Vocal Performance Studio</li>
+                            <li>Piano</li>
+                            <li>Music Theory and Analysis</li>
+                            <li>Sound Recording Technology</li>
+                            <li>Music Composition</li>
+                            <li>Interdisciplinary Arts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="senior-project">
+                    <h4>Senior Project</h4>
+                    <p>"A Comparative Analysis of Sediment Geochemistry in Michigan Mnomen Beds"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Dawson Trotman</h3>
+                    <p class="footer-tagline">Biologist and musician based in New York City. Exploring the intersections of science, art, and the beauty of complex systems.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="music.html">Music</a></li>
+                        <li><a href="research.html">Research</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/dawson-trotman-9115b6313/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/d-trotman" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:dawsonatrotman@gmail.com" aria-label="Email"><i class="far fa-envelope"></i></a>
+                        <a href="https://www.instagram.com/dawsontrotman" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@Dawson_Trotman" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="media/resume.pdf" aria-label="Resume" target="_blank"><i class="far fa-file-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Dawson Trotman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+            this.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('show');
+                document.querySelector('.mobile-menu-button').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
