@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
 --cream:#F4F1EB;
 --cream-dark:#E8E4DC;
@@ -140,7 +141,8 @@ background:var(--ink);
 color:white;
 }
 
-/* ✅ HEADSHOT SIZING (NEW) */
+/* HEADSHOT */
+
 .hero-image{
 display:flex;
 justify-content:flex-end;
@@ -149,9 +151,9 @@ align-items:flex-start;
 
 .hero-image img{
 width:100%;
-max-width:360px;       /* adjust up/down to taste */
-height:460px;          /* fixed height keeps it consistent */
-object-fit:cover;      /* crops instead of stretching */
+max-width:360px;
+height:460px;
+object-fit:cover;
 object-position:center top;
 border-radius:8px;
 box-shadow:0 10px 30px rgba(0,0,0,0.10);
@@ -206,9 +208,22 @@ grid-template-columns:repeat(3,1fr);
 gap:40px;
 }
 
-.featured-item img{
-width:100%;
+.video-wrapper{
+position:relative;
+padding-bottom:56.25%;
+height:0;
+overflow:hidden;
 margin-bottom:20px;
+border-radius:6px;
+}
+
+.video-wrapper iframe{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border:0;
 }
 
 .featured-item-category{
@@ -326,7 +341,7 @@ justify-content:flex-start;
 }
 
 .hero-image img{
-max-width:420px;   /* slightly larger on mobile when it stacks */
+max-width:420px;
 height:520px;
 }
 
@@ -344,6 +359,7 @@ grid-template-columns:1fr;
 }
 
 }
+
 </style>
 </head>
 
@@ -380,21 +396,17 @@ grid-template-columns:1fr;
 
 <div class="hero-text">
 
-<p class="hero-tagline">
-Collaborative pianist
-</p>
+<p class="hero-tagline">Collaborative pianist</p>
 
 <p class="hero-description">
 Based in Southeast Michigan. I regularly partner with singers and instrumentalists for recitals, competitions, performances, studio classes, and lessons.
 </p>
 
 <div class="hero-social">
-
 <a href="https://instagram.com/eden.westie"><i class="fab fa-instagram"></i></a>
 <a href="https://www.facebook.com/eden.west.12"><i class="fab fa-facebook-f"></i></a>
 <a href="https://www.linkedin.com/in/eden-west-879801326/"><i class="fab fa-linkedin-in"></i></a>
 <a href="https://www.youtube.com/@edenwestie"><i class="fab fa-youtube"></i></a>
-
 </div>
 
 </div>
@@ -416,13 +428,11 @@ Based in Southeast Michigan. I regularly partner with singers and instrumentalis
 
 <div>
 <span class="section-label">Biography</span>
-
 <h2 class="about-title">
 About me,<br>
 my work,<br>
 and my passions.
 </h2>
-
 </div>
 
 <div class="about-text">
@@ -436,21 +446,20 @@ Training outside of her schooling include the Lehrer Vocal Institute at Music Ac
 </p>
 
 <p>
-At the University of Michigan, West works as a freelance pianist for the voice department. Her responsibilities include accompanying voice lessons, recitals, departmental performances, studio classes, voice literature classes, opera chorus rehearsals, and masterclasses. She also frequently collaborates with strings, woodwinds, and brass instrumentalists. Her work has included accompanying dance classes and rehearsals for the MPulse Dance Institute, the Michigan Youth Dance Festival, and productions with the Young People’s Theater. She has also served as a choral pianist for the Ann Arbor Youth Chorale, Northside Community Church, and the Washtenaw Women&apos;s Community Chorus. Most recently, she worked with the Opera Company of Middlebury for their cabaret performance as well as Bernstein&apos;s &quot;Trouble in Tahiti.&quot; This past spring, she worked as a répétiteur for &quot;The Bohemians,&quot; Stephen Lusmann&apos;s English adaptation of Puccini&apos;s &quot;La Bohème&quot; with No Fly Productions in Ann Arbor.
+At the University of Michigan, West works as a freelance pianist for the voice department. Her responsibilities include accompanying voice lessons, recitals, departmental performances, studio classes, voice literature classes, opera chorus rehearsals, and masterclasses.
 </p>
 
 <p>
-Her experience as an educator includes completing her student-teaching assistantship at Huron High School with Timothy Krohn and Clague Middle School with Abigail Alwin, teaching orchestra students grades 6-12 and conducting multiple ensembles in rehearsal and performance. 
+Her experience as an educator includes completing her student-teaching assistantship at Huron High School with Timothy Krohn and Clague Middle School with Abigail Alwin.
 </p>
 
 <p>
-West continues to work throughout southeast Michigan as a collaborative pianist, regularly partnering with singers, instrumentalists, dancers, and educators in both academic and community settings.
+West continues to work throughout southeast Michigan as a collaborative pianist, regularly partnering with singers, instrumentalists, dancers, and educators.
 </p>
 
 </div>
 
 </div>
-
 </div>
 </section>
 
@@ -465,45 +474,21 @@ West continues to work throughout southeast Michigan as a collaborative pianist,
 <div class="featured-grid">
 
 <div class="featured-item">
-
-<img src="media/media-youtube-thumb.jpg" alt="YouTube thumbnail">
-
-<span class="featured-item-category">Video</span>
-
-<h3 class="featured-item-title">Recordings & Performances</h3>
-
-<p class="featured-item-desc">
-Recent collaborative performances and recordings.
-</p>
-
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/UW8GZRT3fgs" allowfullscreen></iframe>
+</div>
 </div>
 
 <div class="featured-item">
-
-<img src="media/media-award-thumb.jpg" alt="Award thumbnail">
-
-<span class="featured-item-category">Award</span>
-
-<h3 class="featured-item-title">Presser Scholar</h3>
-
-<p class="featured-item-desc">
-Recipient of the Presser Undergraduate Scholar Award at the University of Michigan.
-</p>
-
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/r3bWjXZfb20" allowfullscreen></iframe>
+</div>
 </div>
 
 <div class="featured-item">
-
-<img src="media/media-collab-thumb.jpg" alt="Collaboration thumbnail">
-
-<span class="featured-item-category">Collaboration</span>
-
-<h3 class="featured-item-title">Collaborative Piano</h3>
-
-<p class="featured-item-desc">
-Repertoire coaching and performance preparation for singers and instrumentalists.
-</p>
-
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/5oimhDXNXfY" allowfullscreen></iframe>
+</div>
 </div>
 
 </div>
