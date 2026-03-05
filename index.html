@@ -95,6 +95,7 @@ line-height:.9;
 display:grid;
 grid-template-columns:1fr 1fr;
 margin-top:-5vw;
+align-items:start;
 }
 
 .hero-text{
@@ -137,6 +138,23 @@ transition:.3s;
 .hero-social a:hover{
 background:var(--ink);
 color:white;
+}
+
+/* ✅ HEADSHOT SIZING (NEW) */
+.hero-image{
+display:flex;
+justify-content:flex-end;
+align-items:flex-start;
+}
+
+.hero-image img{
+width:100%;
+max-width:360px;       /* adjust up/down to taste */
+height:460px;          /* fixed height keeps it consistent */
+object-fit:cover;      /* crops instead of stretching */
+object-position:center top;
+border-radius:8px;
+box-shadow:0 10px 30px rgba(0,0,0,0.10);
 }
 
 /* ABOUT */
@@ -296,6 +314,20 @@ color:var(--ink-light);
 .hero-overlap-container{
 grid-template-columns:1fr;
 margin-top:40px;
+gap:32px;
+}
+
+.hero-text{
+padding-right:0;
+}
+
+.hero-image{
+justify-content:flex-start;
+}
+
+.hero-image img{
+max-width:420px;   /* slightly larger on mobile when it stacks */
+height:520px;
 }
 
 .about-grid{
@@ -359,11 +391,8 @@ Based in Southeast Michigan (Ann Arbor). I partner with singers and instrumental
 <div class="hero-social">
 
 <a href="https://instagram.com/eden.westie"><i class="fab fa-instagram"></i></a>
-
 <a href="https://facebook.com"><i class="fab fa-facebook-f"></i></a>
-
 <a href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a>
-
 <a href="https://www.youtube.com/@edenwestie"><i class="fab fa-youtube"></i></a>
 
 </div>
@@ -433,7 +462,7 @@ Honors include the Presser Undergraduate Scholar Award and the Virginia Allison 
 
 <div class="featured-item">
 
-<img src="media/media-youtube-thumb.jpg">
+<img src="media/media-youtube-thumb.jpg" alt="YouTube thumbnail">
 
 <span class="featured-item-category">Video</span>
 
@@ -447,7 +476,7 @@ Recent collaborative performances and recordings.
 
 <div class="featured-item">
 
-<img src="media/media-award-thumb.jpg">
+<img src="media/media-award-thumb.jpg" alt="Award thumbnail">
 
 <span class="featured-item-category">Award</span>
 
@@ -461,7 +490,7 @@ Recipient of the Presser Undergraduate Scholar Award at the University of Michig
 
 <div class="featured-item">
 
-<img src="media/media-collab-thumb.jpg">
+<img src="media/media-collab-thumb.jpg" alt="Collaboration thumbnail">
 
 <span class="featured-item-category">Collaboration</span>
 
@@ -492,15 +521,10 @@ For collaborations, performances, or coaching inquiries please send a message be
 </p>
 
 <form>
-
 <input type="text" placeholder="Name">
-
 <input type="email" placeholder="Email">
-
 <textarea placeholder="Message"></textarea>
-
 <button type="submit">Send Message</button>
-
 </form>
 
 </div>
@@ -517,44 +541,28 @@ For collaborations, performances, or coaching inquiries please send a message be
 <div class="footer-grid">
 
 <div>
-
 <h3 class="footer-logo">Eden West</h3>
-
-<p>
-Collaborative pianist and music educator based in Ann Arbor, Michigan.
-</p>
-
+<p>Collaborative pianist and music educator based in Ann Arbor, Michigan.</p>
 </div>
 
 <div>
-
 <h4>Navigation</h4>
-
 <ul>
 <li><a href="#home">Home</a></li>
 <li><a href="#about">Biography</a></li>
 <li><a href="#featured">Media</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
-
 </div>
 
 <div>
-
 <h4>Connect</h4>
-
 <div class="social-links">
-
 <a href="https://instagram.com/eden.westie"><i class="fab fa-instagram"></i></a>
-
 <a href="https://facebook.com"><i class="fab fa-facebook-f"></i></a>
-
 <a href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a>
-
 <a href="https://www.youtube.com/@edenwestie"><i class="fab fa-youtube"></i></a>
-
 </div>
-
 </div>
 
 </div>
@@ -568,19 +576,11 @@ Collaborative pianist and music educator based in Ann Arbor, Michigan.
 </footer>
 
 <script>
-
 window.addEventListener('scroll',function(){
-
 const header=document.getElementById('header');
-
-if(window.scrollY>50){
-header.classList.add('scrolled');
-}else{
-header.classList.remove('scrolled');
-}
-
+if(window.scrollY>50) header.classList.add('scrolled');
+else header.classList.remove('scrolled');
 });
-
 </script>
 
 </body>
