@@ -74,7 +74,7 @@
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             letter-spacing: .15em;
             text-transform: uppercase;
             text-decoration: none;
@@ -89,7 +89,7 @@
         }
 
         .nav-links a {
-            font-size: .85rem;
+            font-size: .8rem;
             text-decoration: none;
             color: var(--ink);
             text-transform: uppercase;
@@ -108,7 +108,7 @@
 
         .nav-links a:hover::after { width: 100%; }
 
-        /* HERO - REFINED TYPOGRAPHY */
+        /* HERO - SINGLE LINE REFINEMENT */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -116,20 +116,21 @@
             padding-top: 80px;
         }
 
-        .hero-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3.5rem, 9vw, 8rem); /* Slightly smaller max size */
-            line-height: 0.8; /* Tighter line height */
-            letter-spacing: -0.02em; /* Reduced spacing between letters */
-            margin-bottom: 25px;
-            font-weight: 500;
-        }
-
         .hero-overlap-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1.2fr 0.8fr; /* Adjusted ratio to give the single line more room */
+            gap: 60px;
             align-items: center;
+        }
+
+        .hero-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 6.5vw, 6.5rem); /* Tuned for single line */
+            line-height: 1;
+            letter-spacing: -0.01em;
+            margin-bottom: 15px;
+            font-weight: 500;
+            white-space: nowrap; /* Ensures name stays on one line */
         }
 
         .hero-tagline {
@@ -142,17 +143,15 @@
 
         .hero-description {
             color: var(--ink-light);
-            max-width: 450px;
+            max-width: 480px;
             font-size: 1.05rem;
         }
 
         .hero-image img {
             width: 100%;
-            height: 550px; /* Adjusted height for better balance */
+            height: 520px;
             object-fit: cover;
             border-radius: 4px;
-            filter: grayscale(15%);
-            transition: var(--transition);
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
@@ -198,9 +197,8 @@
 
         .about-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.2rem, 5vw, 4rem);
             line-height: 1.1;
-            font-weight: 500;
         }
 
         .about-text p { margin-bottom: 24px; color: var(--ink-light); }
@@ -244,7 +242,7 @@
 
         .featured-item-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 10px;
             line-height: 1.2;
         }
@@ -307,11 +305,13 @@
 
         /* MOBILE RESPONSIVENESS */
         @media (max-width: 992px) {
-            .hero-overlap-container, .about-grid, .footer-grid { grid-template-columns: 1fr; gap: 50px; }
-            .hero-image img { height: 450px; }
+            .hero-overlap-container, .about-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-image img { height: 400px; }
             .featured-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-            .hero-name { font-size: 15vw; } /* Adjusted for mobile scale */
+            .hero-name { 
+                white-space: normal; /* Allow wrap on very small screens */
+                font-size: 12vw; 
+            } 
         }
     </style>
 </head>
@@ -336,7 +336,7 @@
             <div class="container">
                 <div class="hero-overlap-container">
                     <div class="reveal">
-                        <h1 class="hero-name">Eden<br>West</h1>
+                        <h1 class="hero-name">Eden West</h1>
                         <p class="hero-tagline">Collaborative Pianist</p>
                         <p class="hero-description">
                             Based in Southeast Michigan. Partnering with singers and instrumentalists for recitals, competitions, and coachings.
