@@ -450,12 +450,10 @@
                         <h3>Let's collaborate.</h3>
                         <p>For coaching inquiries, recital accompaniment, or general questions, please reach out via the form below.</p>
                         
-                        <form action="https://formspree.io/f/edenawest@gmail.com" method="POST">
-                            <input type="text" name="name" placeholder="Your Name" required>
+                        <form action="mailto:edenawest@gmail.com" method="GET" enctype="text/plain">
+                            <input type="text" name="subject" placeholder="Your Name / Project Type" required>
                             
-                            <input type="email" name="_replyto" placeholder="Email Address" required>
-                            
-                            <textarea name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
+                            <textarea name="body" placeholder="Tell me about your project..." rows="5" required></textarea>
                             
                             <button type="submit">Send Message</button>
                         </form>
