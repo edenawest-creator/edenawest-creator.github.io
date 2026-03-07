@@ -449,10 +449,14 @@
                     <div class="contact-card reveal">
                         <h3>Let's collaborate.</h3>
                         <p>For coaching inquiries, recital accompaniment, or general questions, please reach out via the form below.</p>
-                        <form action="#">
-                            <input type="text" placeholder="Your Name" required>
-                            <input type="email" placeholder="Email Address" required>
-                            <textarea placeholder="Tell me about your project..." rows="5" required></textarea>
+                        
+                        <form action="https://formspree.io/f/edenawest@gmail.com" method="POST">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            
+                            <input type="email" name="_replyto" placeholder="Email Address" required>
+                            
+                            <textarea name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
+                            
                             <button type="submit">Send Message</button>
                         </form>
                     </div>
