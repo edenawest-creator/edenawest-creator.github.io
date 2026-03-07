@@ -108,7 +108,7 @@
 
         .nav-links a:hover::after { width: 100%; }
 
-        /* HERO - SINGLE LINE REFINEMENT */
+        /* HERO - INCREASED IMAGE SIZE */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -118,19 +118,19 @@
 
         .hero-overlap-container {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr; /* Adjusted ratio to give the single line more room */
-            gap: 60px;
+            grid-template-columns: 1fr 1fr; /* Equal split for more image prominence */
+            gap: 80px;
             align-items: center;
         }
 
         .hero-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 6.5vw, 6.5rem); /* Tuned for single line */
+            font-size: clamp(2.5rem, 6.5vw, 6.5rem);
             line-height: 1;
             letter-spacing: -0.01em;
             margin-bottom: 15px;
             font-weight: 500;
-            white-space: nowrap; /* Ensures name stays on one line */
+            white-space: nowrap;
         }
 
         .hero-tagline {
@@ -149,10 +149,10 @@
 
         .hero-image img {
             width: 100%;
-            height: 520px;
+            height: 650px; /* Bigger photo */
             object-fit: cover;
             border-radius: 4px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
         }
 
         .hero-social {
@@ -231,15 +231,6 @@
             width: 100%; height: 100%; border: 0;
         }
 
-        .featured-item-category {
-            font-size: .7rem;
-            letter-spacing: .15em;
-            text-transform: uppercase;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 8px;
-        }
-
         .featured-item-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.3rem;
@@ -286,30 +277,68 @@
 
         button:hover { background: var(--accent); }
 
-        /* FOOTER */
+        /* FOOTER - THEMED RE-DESIGN */
         footer {
             padding: 100px 0 50px;
-            background: var(--ink);
-            color: var(--cream);
+            background: var(--cream-dark); /* Matches theme */
+            color: var(--ink);
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 60px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 60px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .copyright { text-align: center; margin-top: 40px; font-size: 0.8rem; opacity: 0.6; }
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer-grid h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink);
+        }
+
+        .footer-grid ul { list-style: none; }
+        .footer-grid ul li { margin-bottom: 10px; }
+
+        .footer-grid ul li a {
+            text-decoration: none;
+            color: var(--ink-light);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-grid ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .copyright { 
+            text-align: center; 
+            margin-top: 40px; 
+            font-size: 0.8rem; 
+            opacity: 0.6; 
+            letter-spacing: 0.05em;
+        }
 
         /* MOBILE RESPONSIVENESS */
         @media (max-width: 992px) {
             .hero-overlap-container, .about-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .hero-image img { height: 400px; }
+            .hero-image img { height: 450px; }
             .featured-grid { grid-template-columns: 1fr; }
             .hero-name { 
-                white-space: normal; /* Allow wrap on very small screens */
+                white-space: normal; 
                 font-size: 12vw; 
             } 
         }
@@ -371,55 +400,47 @@
             </div>
         </section>
 
-<section class="featured-section" id="featured">
-    <div class="container">
-        <span class="section-label">Media Gallery</span>
-        <h2 class="featured-title" style="margin-bottom: 40px; font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem);">Recent Performances</h2>
-        
-        <div class="featured-grid">
-            
-            <div class="video-card reveal">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/UW8GZRT3fgs" allowfullscreen></iframe>
-                </div>
-                <div class="video-caption" style="padding: 10px 5px;">
-                    <span class="featured-item-category" style="font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;">Instrumental</span>
-                    <h3 class="featured-item-title" style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-bottom: 10px; line-height: 1.2;">Chopin: Introduction and Polonaise brillante</h3>
-                    <p class="featured-item-desc" style="font-size: 0.95rem; color: var(--ink-light); line-height: 1.5;">
-                        Mitchell George, cello
-                    </p>
+        <section class="featured-section" id="featured">
+            <div class="container">
+                <span class="section-label">Media Gallery</span>
+                <h2 class="featured-title" style="margin-bottom: 40px; font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem);">Recent Performances</h2>
+                
+                <div class="featured-grid">
+                    <div class="video-card reveal">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/UW8GZRT3fgs" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-caption" style="padding: 10px 5px;">
+                            <span class="featured-item-category" style="font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;">Instrumental</span>
+                            <h3 class="featured-item-title">Chopin: Introduction and Polonaise brillante</h3>
+                            <p class="featured-item-desc" style="font-size: 0.95rem; color: var(--ink-light);">Mitchell George, cello</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card reveal">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/r3bWjXZfb20" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-caption" style="padding: 10px 5px;">
+                            <span class="featured-item-category" style="font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;">Vocal</span>
+                            <h3 class="featured-item-title">Rebecca Clarke: The Seal Man</h3>
+                            <p class="featured-item-desc" style="font-size: 0.95rem; color: var(--ink-light);">Madalyn Tomkins, mezzo-soprano</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card reveal">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/5oimhDXNXfY" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-caption" style="padding: 10px 5px;">
+                            <span class="featured-item-category" style="font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;">Vocal</span>
+                            <h3 class="featured-item-title">Undine S. Moore: Love, Let the Windy Cry</h3>
+                            <p class="featured-item-desc" style="font-size: 0.95rem; color: var(--ink-light);">Hallie Ackerman, soprano</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="video-card reveal">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/r3bWjXZfb20" allowfullscreen></iframe>
-                </div>
-                <div class="video-caption" style="padding: 10px 5px;">
-                    <span class="featured-item-category" style="font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;">Vocal</span>
-                    <h3 class="featured-item-title" style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-bottom: 10px; line-height: 1.2;">Rebecca Clarke: The Seal Man</h3>
-                    <p class="featured-item-desc" style="font-size: 0.95rem; color: var(--ink-light); line-height: 1.5;">
-                        Madalyn Tomkins, mezzo-soprano
-                    </p>
-                </div>
-            </div>
-
-            <div class="video-card reveal">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/5oimhDXNXfY" allowfullscreen></iframe>
-                </div>
-                <div class="video-caption" style="padding: 10px 5px;">
-                    <span class="featured-item-category" style="font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;">Vocal</span>
-                    <h3 class="featured-item-title" style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-bottom: 10px; line-height: 1.2;">Undine S. Moore: Love, Let the Windy Cry</h3>
-                    <p class="featured-item-desc" style="font-size: 0.95rem; color: var(--ink-light); line-height: 1.5;">
-                        Hallie Ackerman, soprano
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+        </section>
 
         <section class="contact-section" id="contact">
             <div class="container">
@@ -445,10 +466,12 @@
             <div class="footer-grid">
                 <div>
                     <h3 class="footer-logo">Eden West</h3>
-                    <p>Collaborative pianist based in Ann Arbor, Michigan.</p>
+                    <p style="color: var(--ink-light); font-size: 0.95rem; max-width: 300px;">
+                        Collaborative pianist based in Ann Arbor, Michigan.
+                    </p>
                 </div>
                 <div>
-                    <h4>Navigation</h4>
+                    <h4>Explore</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">Biography</a></li>
@@ -457,11 +480,11 @@
                     </ul>
                 </div>
                 <div>
-                    <h4>Social</h4>
+                    <h4>Connect</h4>
                     <ul>
-                        <li><a href="https://instagram.com/eden.westie">Instagram</a></li>
-                        <li><a href="https://www.youtube.com/@edenwestie">YouTube</a></li>
-                        <li><a href="https://www.linkedin.com/in/eden-west-879801326/">LinkedIn</a></li>
+                        <li><a href="https://instagram.com/eden.westie" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.youtube.com/@edenwestie" target="_blank">YouTube</a></li>
+                        <li><a href="https://www.linkedin.com/in/eden-west-879801326/" target="_blank">LinkedIn</a></li>
                     </ul>
                 </div>
             </div>
@@ -472,14 +495,12 @@
     </footer>
 
     <script>
-        // Header Scroll Effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             if (window.scrollY > 80) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
         });
 
-        // Reveal Animation on Scroll
         const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
