@@ -108,7 +108,7 @@
 
         .nav-links a:hover::after { width: 100%; }
 
-        /* HERO - INCREASED IMAGE SIZE */
+        /* HERO - ONE LINE NAME + LARGE IMAGE */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -118,7 +118,7 @@
 
         .hero-overlap-container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Equal split for more image prominence */
+            grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
         }
@@ -149,7 +149,7 @@
 
         .hero-image img {
             width: 100%;
-            height: 650px; /* Bigger photo */
+            height: 650px;
             object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.12);
@@ -177,18 +177,7 @@
             transform: translateY(-3px);
         }
 
-        /* SECTIONS GENERAL */
-        section { padding: 120px 0; }
-        .section-label {
-            font-size: .75rem;
-            letter-spacing: .25em;
-            text-transform: uppercase;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 24px;
-        }
-
-        /* ABOUT */
+        /* ABOUT & CV BUTTON */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -202,6 +191,39 @@
         }
 
         .about-text p { margin-bottom: 24px; color: var(--ink-light); }
+
+        .cv-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+            padding: 16px 32px;
+            border: 1px solid var(--ink);
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .cv-button i {
+            font-size: 0.9rem;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .cv-button:hover {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .cv-button:hover i {
+            color: var(--cream);
+            transform: translateY(-2px);
+        }
 
         /* MEDIA */
         .featured-section { background: var(--cream-dark); }
@@ -263,7 +285,7 @@
             font-family: inherit;
         }
 
-        button {
+        button[type="submit"] {
             padding: 20px;
             background: var(--ink);
             color: white;
@@ -275,12 +297,12 @@
             transition: var(--transition);
         }
 
-        button:hover { background: var(--accent); }
+        button[type="submit"]:hover { background: var(--accent); }
 
-        /* FOOTER - THEMED RE-DESIGN */
+        /* FOOTER */
         footer {
             padding: 100px 0 50px;
-            background: var(--cream-dark); /* Matches theme */
+            background: var(--cream-dark);
             color: var(--ink);
             border-top: 1px solid rgba(0,0,0,0.05);
         }
@@ -306,7 +328,6 @@
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--ink);
         }
 
         .footer-grid ul { list-style: none; }
@@ -319,28 +340,26 @@
             transition: var(--transition);
         }
 
-        .footer-grid ul li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
+        .footer-grid ul li a:hover { color: var(--accent); padding-left: 5px; }
 
-        .copyright { 
-            text-align: center; 
-            margin-top: 40px; 
-            font-size: 0.8rem; 
-            opacity: 0.6; 
-            letter-spacing: 0.05em;
-        }
+        .copyright { text-align: center; margin-top: 40px; font-size: 0.8rem; opacity: 0.6; }
 
-        /* MOBILE RESPONSIVENESS */
+        /* MOBILE */
         @media (max-width: 992px) {
             .hero-overlap-container, .about-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
             .hero-image img { height: 450px; }
             .featured-grid { grid-template-columns: 1fr; }
-            .hero-name { 
-                white-space: normal; 
-                font-size: 12vw; 
-            } 
+            .hero-name { white-space: normal; font-size: 12vw; } 
+        }
+
+        section { padding: 120px 0; }
+        .section-label {
+            font-size: .75rem;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 24px;
         }
     </style>
 </head>
@@ -394,7 +413,11 @@
                     <div class="about-text reveal">
                         <p>Eden West is a collaborative pianist based in southeast Michigan. She holds degrees in Piano Performance and Music Education from the University of Michigan School of Music, Theatre & Dance, where she studied with Logan Skelton and Ana María Otamendi.</p>
                         <p>During her undergraduate studies, she was recognized as a nine-term James B. Angell Scholar and was awarded the 2024–25 Presser Undergraduate Scholar Award and the Virginia Allison Collaborative Award.</p>
-                        <p>At the University of Michigan, West works as a pianist for the voice department, accompanying lessons, recitals, opera chorus rehearsals, masterclasses. and has music directed opera workshop scenes. Recent professional engagements include the Opera Company of Middlebury in Middlebury, VT, an assistant music director at the Bay View Music Festival, No Fly Productions in Ann Arbor, MI. Additional training and work experience include Music Academy of the West and the Collaborative Piano Institute.</p>
+                        <p>At the University of Michigan, West works as a pianist for the voice department, accompanying lessons, recitals, opera chorus rehearsals, masterclasses, and has music directed opera workshop scenes. Recent professional engagements include the Opera Company of Middlebury in Middlebury, VT, an assistant music director at the Bay View Music Festival, No Fly Productions in Ann Arbor, MI. Additional training and work experience include Music Academy of the West and the Collaborative Piano Institute.</p>
+                        
+                        <a href="https://docs.google.com/document/d/1VqgIWoeXub7ervqZqd7ylqA2Ouz7x5OfEPnXu23Ieww/edit?usp=sharing" class="cv-button" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> View Curriculum Vitae
+                        </a>
                     </div>
                 </div>
             </div>
@@ -404,7 +427,6 @@
             <div class="container">
                 <span class="section-label">Media Gallery</span>
                 <h2 class="featured-title" style="margin-bottom: 40px; font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem);">Recent Performances</h2>
-                
                 <div class="featured-grid">
                     <div class="video-card reveal">
                         <div class="video-wrapper">
@@ -413,10 +435,9 @@
                         <div class="video-caption" style="padding: 10px 5px;">
                             <span class="featured-item-category" style="font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;">Instrumental</span>
                             <h3 class="featured-item-title">Chopin: Introduction and Polonaise brillante</h3>
-                            <p class="featured-item-desc" style="font-size: 0.95rem; color: var(--ink-light);">Mitchell George, cello</p>
+                            <p style="font-size: 0.95rem; color: var(--ink-light);">Mitchell George, cello</p>
                         </div>
                     </div>
-
                     <div class="video-card reveal">
                         <div class="video-wrapper">
                             <iframe src="https://www.youtube.com/embed/r3bWjXZfb20" allowfullscreen></iframe>
@@ -424,10 +445,9 @@
                         <div class="video-caption" style="padding: 10px 5px;">
                             <span class="featured-item-category" style="font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;">Vocal</span>
                             <h3 class="featured-item-title">Rebecca Clarke: The Seal Man</h3>
-                            <p class="featured-item-desc" style="font-size: 0.95rem; color: var(--ink-light);">Madalyn Tomkins, mezzo-soprano</p>
+                            <p style="font-size: 0.95rem; color: var(--ink-light);">Madalyn Tomkins, mezzo-soprano</p>
                         </div>
                     </div>
-
                     <div class="video-card reveal">
                         <div class="video-wrapper">
                             <iframe src="https://www.youtube.com/embed/5oimhDXNXfY" allowfullscreen></iframe>
@@ -435,7 +455,7 @@
                         <div class="video-caption" style="padding: 10px 5px;">
                             <span class="featured-item-category" style="font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;">Vocal</span>
                             <h3 class="featured-item-title">Undine S. Moore: Love, Let the Windy Cry</h3>
-                            <p class="featured-item-desc" style="font-size: 0.95rem; color: var(--ink-light);">Hallie Ackerman, soprano</p>
+                            <p style="font-size: 0.95rem; color: var(--ink-light);">Hallie Ackerman, soprano</p>
                         </div>
                     </div>
                 </div>
@@ -447,29 +467,14 @@
                 <div class="contact-container">
                     <span class="section-label">Inquiry</span>
                     <div class="contact-card reveal">
-                        <h3>Let's collaborate.</h3>
-                        <p>For coaching inquiries, recital accompaniment, or general questions, please click the button below to send me an email.</p>
-                        
-                        <div style="margin-top: 30px; text-align: center;">
-                            <a href="mailto:edenawest@gmail.com?subject=Inquiry%20from%20Website" 
-                               style="display: block; 
-                                      padding: 20px; 
-                                      background: var(--ink); 
-                                      color: white; 
-                                      text-decoration: none; 
-                                      text-transform: uppercase; 
-                                      letter-spacing: 0.2em; 
-                                      font-weight: 600; 
-                                      border-radius: 4px; 
-                                      transition: var(--transition);
-                                      text-align: center;">
-                                Email Eden Directly
-                            </a>
-                            
-                            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--ink-light);">
-                                Or reach out at: <span style="color: var(--accent); font-weight: 600;">edenawest@gmail.com</span>
-                            </p>
-                        </div>
+                        <h3>Let's work together.</h3>
+                        <p>For coaching inquiries, recital accompaniment, or general questions, please reach out via the form below.</p>
+                        <form action="#">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Email Address" required>
+                            <textarea placeholder="Tell me about your project..." rows="5" required></textarea>
+                            <button type="submit">Send Message</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -504,7 +509,7 @@
                 </div>
             </div>
             <div class="copyright">
-                © 2026 Eden West
+                © 2026 Eden West. Designed for Collaborative Artistry.
             </div>
         </div>
     </footer>
@@ -516,14 +521,11 @@
             else header.classList.remove('scrolled');
         });
 
-        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
