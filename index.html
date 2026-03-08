@@ -177,7 +177,7 @@
             transform: translateY(-3px);
         }
 
-        /* ABOUT & CV BUTTON */
+        /* ABOUT & BIO BUTTONS */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -192,35 +192,42 @@
 
         .about-text p { margin-bottom: 24px; color: var(--ink-light); }
 
-        .cv-button {
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .bio-button {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            margin-top: 10px;
-            padding: 16px 32px;
+            padding: 16px 28px;
             border: 1px solid var(--ink);
             color: var(--ink);
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.2em;
             transition: var(--transition);
             border-radius: 2px;
+            white-space: nowrap;
         }
 
-        .cv-button i {
+        .bio-button i {
             font-size: 0.9rem;
             color: var(--accent);
             transition: var(--transition);
         }
 
-        .cv-button:hover {
+        .bio-button:hover {
             background: var(--ink);
             color: var(--cream);
         }
 
-        .cv-button:hover i {
+        .bio-button:hover i {
             color: var(--cream);
             transform: translateY(-2px);
         }
@@ -344,12 +351,13 @@
 
         .copyright { text-align: center; margin-top: 40px; font-size: 0.8rem; opacity: 0.6; }
 
-        /* MOBILE */
+        /* MOBILE RESPONSIVENESS */
         @media (max-width: 992px) {
             .hero-overlap-container, .about-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
             .hero-image img { height: 450px; }
             .featured-grid { grid-template-columns: 1fr; }
             .hero-name { white-space: normal; font-size: 12vw; } 
+            .button-group { justify-content: flex-start; }
         }
 
         section { padding: 120px 0; }
@@ -413,11 +421,16 @@
                     <div class="about-text reveal">
                         <p>Eden West is a collaborative pianist based in southeast Michigan. She holds degrees in Piano Performance and Music Education from the University of Michigan School of Music, Theatre & Dance, where she studied with Logan Skelton and Ana María Otamendi.</p>
                         <p>During her undergraduate studies, she was recognized as a nine-term James B. Angell Scholar and was awarded the 2024–25 Presser Undergraduate Scholar Award and the Virginia Allison Collaborative Award.</p>
-                        <p>At the University of Michigan, West works as a pianist for the voice department, accompanying lessons, recitals, opera chorus rehearsals, masterclasses, and has music directed opera workshop scenes. Recent professional engagements include the Opera Company of Middlebury in Middlebury, VT, an assistant music director at the Bay View Music Festival, No Fly Productions in Ann Arbor, MI. Additional training and work experience include Music Academy of the West and the Collaborative Piano Institute.</p>
+                        <p>At the University of Michigan, West works as a pianist for the voice department, accompanying lessons, recitals, opera chorus rehearsals, masterclasses, and has music directed opera workshop scenes. Recent professional engagements include the Opera Company of Middlebury in Middlebury, VT, assistant music directing at the Bay View Music Festival, No Fly Productions in Ann Arbor, MI. Additional training and work experience include Music Academy of the West and the Collaborative Piano Institute.</p>
                         
-                        <a href="https://docs.google.com/document/d/1VqgIWoeXub7ervqZqd7ylqA2Ouz7x5OfEPnXu23Ieww/edit?usp=sharing" class="cv-button" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> View Curriculum Vitae
-                        </a>
+                        <div class="button-group">
+                            <a href="https://docs.google.com/document/d/1lapbTthCgXAGplEHuZUmVXoh1AgnUgrnkf2r1KQTlgU/edit?usp=sharing" class="bio-button" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Curriculum Vitae
+                            </a>
+                            <a href="https://docs.google.com/document/d/1VqgIWoeXub7ervqZqd7ylqA2Ouz7x5OfEPnXu23Ieww/edit?usp=sharing" class="bio-button" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-music"></i> Repertoire List
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
