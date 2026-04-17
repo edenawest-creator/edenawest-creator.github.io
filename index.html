@@ -1,7 +1,291 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eden West | Collaborative Pianist</title>
+
+    <meta name="description" content="Official portfolio of Eden West, a collaborative pianist and Kovner Fellow at The Juilliard School. Explore recitals, media, and professional materials.">
+    <meta name="keywords" content="Eden West, Collaborative Pianist, Piano, Juilliard, Accompanist, Michigan Musician">
+    <link rel="canonical" href="https://edenwestpiano.com">
+    
+    <meta property="og:title" content="Eden West | Collaborative Pianist">
+    <meta property="og:description" content="Professional portfolio of collaborative pianist Eden West.">
+    <meta property="og:image" content="media/eden-west-headshot.jpg">
+    <meta property="og:url" content="https://edenwestpiano.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Eden West",
+      "jobTitle": "Collaborative Pianist",
+      "url": "https://edenwestpiano.com",
+      "sameAs": [
+        "https://instagram.com/eden.westie",
+        "https://www.linkedin.com/in/eden-west-879801326/",
+        "https://www.youtube.com/@edenwestie"
+      ]
+    }
+    </script>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎹</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cream: #F4F1EB;
+            --cream-dark: #E8E4DC;
+            --ink: #1A1A1A;
+            --ink-light: #4A4A4A;
+            --accent: #C4553D;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Instrument Sans', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1300px; margin: auto; padding: 0 5vw; }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 24px 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(244, 241, 235, 0.9);
+            backdrop-filter: blur(15px);
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { font-size: .8rem; text-decoration: none; color: var(--ink); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        /* HERO */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
+        .hero-overlap-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6.5vw, 6.5rem); line-height: 1; margin-bottom: 15px; }
+        .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.8rem; color: var(--accent); margin-bottom: 20px; }
+        .hero-image img { width: 100%; height: 650px; object-fit: cover; border-radius: 4px; }
+
+        .hero-social { display: flex; gap: 15px; margin-top: 40px; }
+        .hero-social a { width: 45px; height: 45px; border: 1px solid var(--cream-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink-light); text-decoration: none; transition: var(--transition); }
+        .hero-social a:hover { background: var(--ink); color: var(--cream); transform: translateY(-3px); }
+
+        /* ABOUT */
+        .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; padding: 100px 0; }
+        .about-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.1; }
+        
+        .button-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .bio-button {
+            display: inline-flex; align-items: center; gap: 12px; padding: 16px 28px;
+            border: 1px solid var(--ink); color: var(--ink); text-decoration: none;
+            font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em;
+            transition: var(--transition);
+        }
+        .bio-button:hover { background: var(--ink); color: var(--cream); }
+
+        /* MEDIA SECTION */
+        .featured-section { background: var(--cream-dark); padding: 100px 0; }
+        .featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .video-card { background: var(--cream); padding: 15px; border-radius: 8px; }
+
+        .video-wrapper {
+            position: relative; padding-bottom: 56.25%; background: #000; border-radius: 4px; overflow: hidden; cursor: pointer;
+        }
+
+        .video-wrapper img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.3s; }
+        .video-wrapper:hover img { opacity: 1; }
+
+        .play-button {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 60px; height: 60px; background: rgba(196, 85, 61, 0.9); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: white; pointer-events: none;
+        }
+
+        /* CONTACT */
+        .contact-card { background: white; padding: 60px; border-radius: 12px; text-align: center; max-width: 800px; margin: auto; }
+
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 992px) {
+            .hero-overlap-container, .about-grid, .featured-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-image img { height: 450px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+
 <body>
-    <h1>Testing EdenWestPiano.com</h1>
-    <p>If you can see this, the hosting is working correctly.</p>
+
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">Eden West</a>
+                <ul class="nav-links">
+                    <li><a href="#about">Biography</a></li>
+                    <li><a href="#featured">Media</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-overlap-container">
+                    <div class="reveal">
+                        <h1 class="hero-name">Eden West</h1>
+                        <p class="hero-tagline">Collaborative Pianist</p>
+                        <p>I am a collaborative pianist based in Southeast Michigan. I regularly partner with singers and instrumentalists for recitals, competitions, and coachings.</p>
+                        <div class="hero-social">
+                            <a href="https://instagram.com/eden.westie" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@edenwestie" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.linkedin.com/in/eden-west-879801326/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="hero-image reveal">
+                        <img src="media/eden-west-headshot.jpg" alt="Eden West - Professional Headshot" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="reveal">
+                        <h2 class="about-title">About me, recent work.</h2>
+                    </div>
+                    <div class="reveal">
+                        <p>Eden West is a collaborative pianist currently based in southeast Michigan. In the fall of 2026, she will begin her Master of Music in Collaborative Piano at The Juilliard School as a Kovner Fellow. A summa cum laude graduate of the University of Michigan, Eden holds dual bachelor’s degrees in Piano Performance and Music Education. Her training was guided by Logan Skelton and Ana María Otamendi, and her academic record earned her the distinction of being a nine-term James B. Angell Scholar and the recipient of the Presser Undergraduate Scholar Award.</p>
+                        <p style="margin-top: 20px;">West has began to build a professional portfolio in both vocal and instrumental realms. She recently served as a rehearsal pianist and coach for the Opera Company of Middlebury’s production of Trouble in Tahiti, performing both in the pit and on stage. During her time at the University of Michigan, she served as a staff pianist, where she music directed opera workshop scenes and collaborated with students and faculty for recitals, juries, and masterclasses. Additional training comes from Music Academy of the West, the Bayview Music Festival, the Collaborative Piano Institute, and SongFest.</p>
+                        <p style="margin-top: 20px;">Beyond her work at the piano, Eden is a certified educator and an active leader in the musical community. She served two terms as President of the University of Michigan’s chapter of the National Association for Music Education, and completed her student-teaching internship at Clague Middle School and Huron High School in Ann Arbor, MI. She also studied the violin for twelve years and continues to play in community orchestras.</p>
+                        
+                        <div class="button-group">
+                            <a href="https://docs.google.com/document/d/1VqgIWoeXub7ervqZqd7ylqA2Ouz7x5OfEPnXu23Ieww/edit?usp=sharing" class="bio-button" target="_blank">Curriculum Vitae</a>
+                            <a href="https://docs.google.com/document/d/1lapbTthCgXAGplEHuZUmVXoh1AgnUgrnkf2r1KQTlgU/edit?usp=sharing" class="bio-button" target="_blank">Repertoire List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-section" id="featured">
+            <div class="container">
+                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; margin-bottom: 60px;">Media Gallery</h2>
+                <div class="featured-grid">
+                    <div class="video-card reveal">
+                        <div class="video-wrapper" data-video-id="r3bWjXZfb20">
+                            <img src="https://img.youtube.com/vi/r3bWjXZfb20/maxresdefault.jpg" alt="Rebecca Clarke performance thumbnail">
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3 style="margin-top:15px; font-family: 'Cormorant Garamond', serif;">Rebecca Clarke: The Seal Man</h3>
+                    </div>
+
+                    <div class="video-card reveal">
+                        <div class="video-wrapper" data-video-id="5oimhDXNXfY">
+                            <img src="https://img.youtube.com/vi/5oimhDXNXfY/maxresdefault.jpg" alt="Undine Moore performance thumbnail">
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3 style="margin-top:15px; font-family: 'Cormorant Garamond', serif;">Undine Moore: Love, Let the Windy Cry</h3>
+                    </div>
+
+                    <div class="video-card reveal">
+                        <div class="video-wrapper" data-video-id="MgT634LwkY4">
+                            <img src="https://img.youtube.com/vi/MgT634LwkY4/maxresdefault.jpg" alt="Debussy performance thumbnail">
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3 style="margin-top:15px; font-family: 'Cormorant Garamond', serif;">Debussy: Il pleure dans mon coeur</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="padding: 120px 0;">
+            <div class="container">
+                <div class="contact-card reveal">
+                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 20px;">Let's work together.</h2>
+                    <p>For inquiries, please email <a href="mailto:edenwestpiano@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 600;">edenwestpiano@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 60px 0; text-align: center; border-top: 1px solid rgba(0,0,0,0.05);">
+        <p style="font-size: 0.8rem; opacity: 0.6;">© 2026 Eden West.</p>
+    </footer>
+
+    <script>
+        // Header Visual Change
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // "Lite" Video Loader Logic
+        // This script looks for any video-wrapper and turns it into a real video on click.
+        document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+            wrapper.addEventListener('click', function() {
+                const videoId = this.getAttribute('data-video-id');
+                // We build the iframe here to keep the HTML code clean and safe
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', 'https://www.youtube.com/embed/' + videoId + '?autoplay=1');
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allow', 'autoplay; encrypted-media');
+                iframe.setAttribute('allowfullscreen', 'true');
+                iframe.style.position = 'absolute';
+                iframe.style.top = '0';
+                iframe.style.left = '0';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                
+                this.innerHTML = ''; // Clear thumbnail
+                this.appendChild(iframe); // Add video
+            });
+        });
+
+        // Reveal Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
